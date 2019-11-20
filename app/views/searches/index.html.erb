@@ -2,14 +2,21 @@
   <script>
     $(function() {
       console.log("JQuery here!");
+      $("#organization-fields").hide();
+      $("#user-fields").hide();
+      $("#ticket-fields").hide();
+    });
+    $("#organization-select").click(function( event ){
+      console.log("Organization!");
+      $("#organization-fields").toggle();
     });
   </script>
 <% end %>
 
 <h1>What are you searching for?</h1>
 
-<button>An Organization</button>
-<div id="organization-search">
+<button id="organization-select">An Organization</button>
+<div id="organization-fields" >
   <h2>What are you searching with?</h2>
   <ul>
     <li>Organization ID</li>
@@ -24,8 +31,8 @@
   </ul>
 </div>
 
-<button>A User</button>
-<div id="user-search">
+<button id="user-select">A User</button>
+<div id="user-fields">
   <h2>What are you searching with?</h2>
   <ul>
     <li>User ID</li>
@@ -50,8 +57,8 @@
   </ul>
 </div>
 
-<button>A Ticket</button>
-<div id="ticket-search">
+<button id="ticket-select">A Ticket</button>
+<div id="ticket-fields">
   <h2>What are you searching with?</h2>
   <ul>
     <li>Ticket ID</li>
