@@ -9,6 +9,7 @@
     $("#organization-select").click(function( event ){
       console.log("Organization!");
       $("#organization-fields").toggle();
+      //Allow user to submit search criteria
     });
   </script>
 <% end %>
@@ -18,17 +19,32 @@
 <button id="organization-select">An Organization</button>
 <div id="organization-fields" >
   <h2>What are you searching with?</h2>
-  <ul>
-    <li>Organization ID</li>
-    <li>URL</li>
-    <li>External ID</li>
-    <li>Name</li>
-    <li>Domain name</li>
-    <li>Created date</li>
-    <li>Details</li>
-    <li>Shared Tickets</li>
-    <li>Tags</li>
-  </ul>
+  <!-- Create Ruby form with radio buttons and labels
+    https://guides.rubyonrails.org/form_helpers.html -->
+  <%= form_with(url: "/", method: "get") do %>
+    <%= radio_button_tag(:org_criteria, "_id") %>
+    <%= label_tag(:_id, "Organization ID") %>
+    <%= radio_button_tag(:org_criteria, "url") %>
+    <%= label_tag(:url, "URL") %>
+    <%= radio_button_tag(:org_criteria, "external_id") %>
+    <%= label_tag(:external_id, "External ID") %>
+    <%= radio_button_tag(:org_criteria, "name") %>
+    <%= label_tag(:name, "Name") %>
+    <%= radio_button_tag(:org_criteria, "domain_names") %>
+    <%= label_tag(:domain_names, "Domain name") %>
+    <%= radio_button_tag(:org_criteria, "created_at") %>
+    <%= label_tag(:created_at, "Created date") %>
+    <%= radio_button_tag(:org_criteria, "details") %>
+    <%= label_tag(:details, "Details") %>
+    <%= radio_button_tag(:org_criteria, "shared_tickets") %>
+    <%= label_tag(:shared_tickets, "Shared Tickets") %>
+    <%= radio_button_tag(:org_criteria, "tags") %>
+    <%= label_tag(:tags, "Tags") %>
+    <br /><br />
+    <%= label_tag(:org_value, "Search for:") %>
+    <%= text_field_tag(:org_value) %>
+    <%= submit_tag("Search") %>
+  <% end %>
 </div>
 
 <button id="user-select">A User</button>
