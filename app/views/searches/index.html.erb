@@ -9,11 +9,19 @@
       console.log("Organization!");
       $("#organization-fields").toggle();
       //Allow user to submit search criteria
-    $("form").submit(function (event) {
+    $("form").submit(function (event) {event.preventDefault();
       let searchTerm = ( $(this).serializeArray());
-      $.get("/org_search/", { org_criteria: searchTerm.org_criteria, org_value: searchTerm.org_value }).success(console.log("Success!"));
+      $.get("/org_search/", { 
+        organization: { 
+          org_criteria: searchTerm.org_criteria, 
+          org_value: searchTerm.org_value 
+        }
+      }).success(function(data) {
+        console.log("Success!");
+        $("#results").html(data);
+      });
 
-      event.preventDefault();
+      
     });
     });
   </script>
@@ -22,11 +30,14 @@
 <h1>What are you searching for?</h1>
 
 <button id="organization-select">An Organization</button>
+<button id="user-select">A User</button>
+<button id="ticket-select">A Ticket</button>
+
 <div id="organization-fields" >
   <h2>What are you searching with?</h2>
   <!-- Create Ruby form with radio buttons and labels
     https://guides.rubyonrails.org/form_helpers.html -->
-  <%= form_with(method: "get") do %>
+  <%= form_with(method: "get", remote: true) do %>
     <%= radio_button_tag(:org_criteria, "_id") %>
     <%= label_tag(:_id, "Organization ID") %>
     <%= radio_button_tag(:org_criteria, "url") %>
@@ -52,7 +63,6 @@
   <% end %>
 </div>
 
-<button id="user-select">A User</button>
 <div id="user-fields">
   <h2>What are you searching with?</h2>
   <ul>
@@ -78,7 +88,6 @@
   </ul>
 </div>
 
-<button id="ticket-select">A Ticket</button>
 <div id="ticket-fields">
   <h2>What are you searching with?</h2>
   <ul>
@@ -98,4 +107,7 @@
     <li>Due date</li>
     <li>Submitted via</li>
   </ul>
+</div>
+
+<div id="results">
 </div>
