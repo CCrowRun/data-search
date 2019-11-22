@@ -5,24 +5,18 @@
       $("#user-fields").hide();
       $("#ticket-fields").hide();
     });
-    $("#organization-select").click(function( event ){
-      console.log("Organization!");
+    $("#organization-select").click(function(event) {
       $("#organization-fields").toggle();
-      //Allow user to submit search criteria
+    });
+    //Allow user to submit search criteria
     $("form").submit(function (event) {event.preventDefault();
-      let searchTerm = ( $(this).serializeArray());
+      let searchTerm = ($(this).serializeArray());
       $.get("/org_search/", { 
-        organization: { 
           org_criteria: searchTerm.org_criteria, 
           org_value: searchTerm.org_value 
-        }
       }).success(function(data) {
-        console.log("Success!");
         $("#results").html(data);
       });
-
-      
-    });
     });
   </script>
 <% end %>

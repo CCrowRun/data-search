@@ -3,19 +3,15 @@ class SearchesController < ApplicationController
   end
 
   def org_search
-    @search_terms = params(org_params)
-    redirect_to org_search_path
-    # search_file = File.read('organizations.json')
+    @search_terms = { org_params[:org_criteria] => org_params[:org_value] }
+    # search_file = File.read('/app/assets/javascripts/JSON_data/organizations.json')
     # search_hash = JSON.parse(file)
-    # render json: search_hash[:_id].first
+    # render json: search_hash
 
   end
 private
-  def parse_json
-    #helper method to parse the three files before search
-  end
 
   def org_params
-    params.require(:organization).permit(:org_criteria, :org_value)
+    params.permit(:org_criteria, :org_value)
   end
 end
