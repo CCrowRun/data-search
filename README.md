@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+##Application Instructions
+
+
 ## User Stories
 As a customer service representative, I want to search for existing organizations based on known criteria to retrieve all matches for that criteria so that I may review all details associated with the organization. Details below:
 * Organization ID
@@ -75,3 +78,23 @@ As a customer service representative, I want to search existing users based on k
 As a customer service representative, I want to search for fields that are empty for any of the above so that I can ensure data is appropriately filled in.
 
 As a customer service representative, I want to know if no results are returned so that I can review whether it needs to be created in the system or not.
+
+##Design Decisions
+
+###Language, Framework
+* Ruby on Rails vs. vanilla Ruby and Python
+* JQuery, AngularJS, vanilla Javascript
+
+###JSON file handling
+* PostgreSQL vs data file
+
+##Application languages and Versions
+
+##Next Steps
+* Research HTTP requests to confirm what AJAX is sending to the controller
+* Review controller org_search method to confirm parsing of the correct JSON file to a hash is succeeding
+* Use kay from created hash set to search for items that match the user-entered hash set
+* Revise JQuery to dyamically update the bottom of the page with search results
+* Expand controller to include a similar method for users and tickets
+* Run linter against results
+
