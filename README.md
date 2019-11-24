@@ -1,30 +1,10 @@
-# README
+# Data Search Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-##Application Instructions
-
+## Application Instructions
+### Install
+### Workflows
 
 ## User Stories
 As a customer service representative, I want to search for existing organizations based on known criteria to retrieve all matches for that criteria so that I may review all details associated with the organization. Details below:
@@ -79,18 +59,18 @@ As a customer service representative, I want to search for fields that are empty
 
 As a customer service representative, I want to know if no results are returned so that I can review whether it needs to be created in the system or not.
 
-##Design Decisions
+## Design Decisions
 
-###Language, Framework
+### Language, Framework
 * Ruby on Rails vs. vanilla Ruby and Python
 * JQuery, AngularJS, vanilla Javascript
 
-###JSON file handling
+### JSON file handling
 * PostgreSQL vs data file
 
-##Application languages and Versions
+## Application languages and Versions
 
-##Next Steps
+## Next Steps
 * Research HTTP requests to confirm what AJAX is sending to the controller
 * Review controller org_search method to confirm parsing of the correct JSON file to a hash is succeeding
 * Use kay from created hash set to search for items that match the user-entered hash set
