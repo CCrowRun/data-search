@@ -3,10 +3,10 @@ class SearchesController < ApplicationController
   end
 
   def org_search
-    @search_terms = { org_params[:org_criteria] => org_params[:org_value] }
-    # search_file = File.read('/app/assets/javascripts/JSON_data/organizations.json')
-    # search_hash = JSON.parse(file)
-    # render json: search_hash
+    @search_terms = org_params
+    search_file_contents = File.read('/app/assets/javascripts/JSON_data/organizations.json')
+    # search_hash = JSON.parse(search_file_contents)
+    render json: @search_terms
 
   end
 private

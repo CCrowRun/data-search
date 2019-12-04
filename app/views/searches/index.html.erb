@@ -10,13 +10,14 @@
     });
     //Allow user to submit search criteria
     $("form").submit(function (event) {event.preventDefault();
-      let searchTerm = ($(this).serializeArray());
-      $.get("/org_search/", { 
-          org_criteria: searchTerm.org_criteria, 
-          org_value: searchTerm.org_value 
-      }).success(function(data) {
-        $("#results").html(data);
-      });
+      // let searchTerm = ($(this).serializeArray());
+      // console.log("Search Term criteria: " + searchTerm.org_criteria);
+      // $.get("/org_search/", { organization: {
+      //     org_criteria: searchTerm.org_criteria, 
+      //     org_value: searchTerm.org_value }
+      // }).success(function(data) {
+      //   $("#results").html(data);
+      // });
     });
   </script>
 <% end %>
@@ -31,7 +32,7 @@
   <h2>What are you searching with?</h2>
   <!-- Create Ruby form with radio buttons and labels
     https://guides.rubyonrails.org/form_helpers.html -->
-  <%= form_with(method: "get", remote: true) do %>
+  <%= form_with(url: "/org_search/", method: "get", remote: true) do %>
     <%= radio_button_tag(:org_criteria, "_id") %>
     <%= label_tag(:_id, "Organization ID") %>
     <%= radio_button_tag(:org_criteria, "url") %>
