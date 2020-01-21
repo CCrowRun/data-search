@@ -3,10 +3,11 @@ class SearchesController < ApplicationController
   end
 
   def org_search
-    @search_terms = org_params
-    search_file_contents = File.read('/app/assets/javascripts/JSON_data/organizations.json')
-    # search_hash = JSON.parse(search_file_contents)
-    render json: @search_terms
+    search_file_contents = File.read("#{Rails.root}/app/data/organizations.json")
+    data = JSON.parse(search_file_contents)
+    result = data.select { |org| org[org_params["org_criteria"]].to_s == org_params["org_value"]}
+    byebug
+    render json: result
 
   end
 private
